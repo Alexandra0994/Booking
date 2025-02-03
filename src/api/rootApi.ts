@@ -2,16 +2,20 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const rootApi = createApi({
     reducerPath: 'rootApi',
-    baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
+    baseQuery: fetchBaseQuery({ baseUrl: '/api/' }),
     endpoints: (builder) => ({
-        getPosts: builder.query({
-            query: () => 'posts',
+        getAuth: builder.mutation({
+            query: (body) => ({
+                url: 'auth',
+                method: 'POST',
+                body,
+            })
         }),
-        getPostById: builder.query({
-            query: (id) => `posts/${id}`,
+        getBooking: builder.query({
+            query: () => `booking`,
         }),
     }),
 });
 
-export const { useGetPostsQuery, useGetPostByIdQuery } = rootApi;
+export const { useGetAuthMutation, useGetBookingQuery } = rootApi;
 
