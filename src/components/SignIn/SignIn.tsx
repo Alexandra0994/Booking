@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Box } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import styles from './styles.module.scss';
+import { useGetAuthMutation } from '../../api/RootApi';
 
 const SignIn: React.FC = () => {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [authToken, setAuthToken] = useState<string | null>(null);
+    const [getAuth, { isLoading }] = useGetAuthMutation();
 
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        console.log('Sign In Submitted:', { email, password });
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        try {
+            const response = await getAuth({ username, password }).unwrap();
+            console.log('Token received:', response.token);
+            setAuthToken(response.token); // Save token for later use
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
     };
 
     return (
@@ -19,12 +29,11 @@ const SignIn: React.FC = () => {
                 </Typography>
                 <form onSubmit={handleSubmit} className={styles.form}>
                     <TextField
-                        label="Email"
+                        label="Username"
                         variant="outlined"
-                        type="email"
                         fullWidth
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                         className={styles.inputField}
                     />
                     <TextField
@@ -42,10 +51,16 @@ const SignIn: React.FC = () => {
                         color="primary"
                         fullWidth
                         className={styles.submitButton}
+                        disabled={isLoading}
                     >
-                        Sign In
+                        {isLoading ? 'Signing In...' : 'Sign In'}
                     </Button>
                 </form>
+                {authToken && (
+                    <Typography variant="body1" className={styles.tokenDisplay}>
+                        Token: {authToken}
+                    </Typography>
+                )}
             </Box>
         </Box>
     );
