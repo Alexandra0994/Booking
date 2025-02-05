@@ -1,73 +1,67 @@
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideUp {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f9;
-    padding: 16px;
-}
-
-.formContainer {
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
-    background-color: #fff;
+    width: 400px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.6s ease-out;
-}
+    padding: 35px;
+    text-align: center;
+    border: 1px solid rgba(37, 37, 37, 0.5);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(17px);
+    z-index: 2;
 
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.inputField {
-    margin-bottom: 16px;
-    animation: slideUp 0.8s ease-out;
-}
-
-.submitButton {
-    margin-top: 16px;
-    animation: slideUp 1s ease-out;
-}
-
-@media (max-width: 600px) {
-    .container {
-        padding: 8px;
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #000;
     }
 
-    .formContainer {
-        padding: 16px;
-        max-width: 100%;
+    .forget {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 25px 0 35px 0;
+        color: #000;
+
+        label {
+            display: flex;
+            align-items: center;
+
+            p {
+                margin-left: 8px;
+            }
+        }
     }
 
-    .submitButton {
-        font-size: 14px;
+    button {
+        background: #000;
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
+        border-radius: 3px;
+        font-size: 16px;
+        border: 2px solid transparent;
+        transition: 0.3s ease;
+
+        &:hover {
+            color: #000;
+            border-color: #000;
+            background: rgba(255, 255, 255, 0.15);
+        }
+    }
+
+    .createAccount {
+        text-align: center;
+        margin-top: 30px;
+        color: #000;
+
+        a {
+            color: #000;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 }

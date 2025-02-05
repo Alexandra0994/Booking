@@ -1,50 +1,18 @@
+import GradientBackground from "./components/GradientBackground/GradientBackground";
 import SignIn from "./components/SignIn/SignIn";
+import styles from './styles/App.module.scss';
 const App = () => {
 
   return (
-    <SignIn />
+    <div className={styles.app}>
+      <SignIn />
+      <GradientBackground />
+    </div>
   );
 };
 
 export default App;
 
-
-
-
-// import axios from "axios";
-// import { useState } from "react";
-
-// const App: React.FC = () => {
-//   const [token, setToken] = useState<string | null>(null);
-//   const [error, setError] = useState<string | null>(null);
-
-//   const login = async () => {
-//     try {
-//       const response = await axios.post("/api/auth", {
-//         username: "admin",
-//         password: "password123",
-//       }, {
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       });
-
-//       setToken(response.data.token);
-//       setError(null);
-//     } catch (err) {
-//       setError("Ошибка авторизации");
-//       console.error(err);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={login}>Войти</button>
-//       {token && <p>Токен: {token}</p>}
-//       {error && <p style={{ color: "red" }}>{error}</p>}
-//     </div>
-//   );
-// };
 
 // export default App;
 // import { useEffect, useState } from "react";

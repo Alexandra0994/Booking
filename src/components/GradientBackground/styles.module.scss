@@ -1,0 +1,64 @@
+.gradientBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.gradientsContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: blur(40px);
+}
+
+.g1,
+.g2,
+.g3,
+.g4,
+.g5 {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    mix-blend-mode: hard-light;
+}
+
+.g1 {
+    background: radial-gradient(circle, rgba(104, 109, 224, 0.8), rgba(104, 109, 224, 0));
+    animation: moveVertical 10s ease infinite;
+}
+
+.g2 {
+    background: radial-gradient(circle, rgba(126, 214, 223, 0.8), rgba(126, 214, 223, 0));
+    animation: moveInCircle 10s reverse infinite;
+}
+
+@keyframes moveVertical {
+    0% {
+        transform: translateY(-50%);
+    }
+
+    50% {
+        transform: translateY(50%);
+    }
+
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes moveInCircle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
