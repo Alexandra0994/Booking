@@ -24,7 +24,7 @@ const SignIn = () => {
 
     return (
         <div className={styles.container}>
-            <h2>Sign In</h2>
+            <h2>Log In</h2>
             <form onSubmit={handleSubmit}>
                 <InputField
                     type="text"
