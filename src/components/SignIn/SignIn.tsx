@@ -58,9 +58,6 @@ const SignIn = () => {
                 >
                     {isLoading ? 'Signing In...' : 'Sign In'}
                 </Button>
-                <div className={styles.createAccount}>
-                    <p>Don't have an account? <a href="#">Create Account</a></p>
-                </div>
             </form>
             {authToken && (
                 <p className={styles.tokenDisplay}>
