@@ -65,3 +65,19 @@
         }
     }
 }
+
+.passwordField {
+    display: flex;
+}
+
+button.showPasswordButton {
+    position: absolute;
+    right: 35px;
+    top: 48%;
+    transform: translateY(-50%);
+    background: none;
+    padding: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
