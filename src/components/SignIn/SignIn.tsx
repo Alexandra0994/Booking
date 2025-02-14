@@ -3,11 +3,13 @@ import InputField from '../InputField/InputField';
 import { useGetAuthMutation } from '../../api/rootApi';
 import { useState } from 'react';
 import { Button } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const SignIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [authToken, setAuthToken] = useState<string | null>(null);
+    const [showPassword, setShowPassword] = useState(false);
     const [getAuth, { isLoading }] = useGetAuthMutation();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -33,13 +35,22 @@ const SignIn = () => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
-                <InputField
-                    type="password"
-                    label="Enter password"
-                    icon="fas fa-lock"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                <div className={styles.passwordField}>
+                    <InputField
+                        type={showPassword ? "text" : "password"}
+                        label="Enter password"
+                        icon="fas fa-lock"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button
+                        type="button"
+                        className={styles.showPasswordButton}
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </button>
+                </div>
 
                 <div className={styles.forget}>
                     <label htmlFor="Save-login">
@@ -69,6 +80,7 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
 
 // import React, { useState } from 'react';
 // import { Box, Button, TextField, Typography } from '@mui/material';
